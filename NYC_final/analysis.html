@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Analysis</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="./css/analysis_style.css">
+
+</head>
+
+<body id="myPage">
+
+<!-- Navigation -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- if the window get adjusted, the navbar will be a single button -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#NavbarContent">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- navabr -->
+      <a class="navbar-brand" href="./index.html">WHO IS THE WINNER</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="./index.html">HOME</a></li>
+      <li><a href="./background.html">BACKGROUND</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> MAP <div class="caret"></div></a>
+        <ul class="dropdown-menu">
+          <li><a href="./choropleth.html">Choropleth Map</a></li>
+          <li><a href="./flow.html">Flow Map</a></li>
+        </ul>
+      </li>
+      <li class="active"><a href="./analysis.html">ANALYSIS</a></li>
+      <li><a href="./us.html">ABOUT US</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-----header----->
+<!--free icons from: https://www.flaticon.com-->
+<section id="showcase">
+  <div class="container">
+    <div class="row"><br><br><br><br><br><br></div>
+    <div class="row"><br><br><br></div>
+    <img src="./pic/icon_analysis.png" width="130" height="130">
+    <h>ANALYSIS</h>
+  </div>
+</section>
+
+</div></div>
+
+
+<!-- analysis page intro-->
+<div id="background_intro" class="container-fluid">
+  <div class="row">
+    <div class="intro-content">
+      <p>
+        <br>
+        <h>" </h> To compare the vehicle preference and travel pattern in New York City, we aggregated 104,000,000 trip records of Yellow Taxi, Green Taxi, Uber and Lyft. The interactive maps illustrate the spatial-temporal distribution, service volume and traffic flows of four kinds of vehicles in 263 taxi zones.<br><br>
+
+        The following statistic analysis is based on Pick-Ups data and includes four themes: <strong>Order Counts, Average Trip Duration, Average Trip Distance and Auto Regressive Integrated Moving Average (ARIMA) Model Training</strong>, which further illustrate meaningful information and interesting findings in each borough.<br><br>
+        Hope these findings can bring significant insights and inspirations for both department of transportation (DOT) and citizens in New York City.<h> "</h>
+        <br><br>
+     </p>
+   </div>
+  </div>
+</div>
+<br>
+<hr size="10">
+<!-- analysis page content -->
+<!--analysis count-->
+
+<div class="count">
+  <div class="row">
+		<div class="section-title"><h1>Order Counts</h1></div>
+    <div class="text">
+      <p>The graph below shows the average order amount for each type of vehicle in each hour of a week, the x-axis is the timeline and the y-axis is the hourly order counts. It illustrates the trend of vehicle using in 24 hours of 7 days, as well as the service volume difference between each type of vehicle in specific time. As such, the general trend, rush-hour of demand, driver’s day off and even nightlife status can be concluded in boroughs.</p><br>
+      <div class="italicText">
+        <strong>
+          <p>- In each borough, there is an increasing trend of overall amount of vehicle being used from Monday to Friday.</p>
+          <p>- Uber drivers preferred to take a holiday on Sunday while comparing the volume of Uber between weekdays and weekends.</p>
+          <p>- The morning and evening rush-hour of demand occurred at 8 am and 6 pm correspondingly in weekdays, but an hour delay of evening rush-hour on Thursday and Friday.</p>
+          <p>- In Manhattan, traffic flow in wee hours of weekdends was much higher than that of weekdays.</p>
+        </strong>
+      </div><br>
+    </div>
+    <div class="selection">
+      <select class="custom-select" id="borough" onchange="count_selection()">
+        <option selected>Select Borough</option>
+        <option value="Bronx">Bronx</option>
+        <option value="Brooklyn">Brooklyn</option>
+        <option value="Manhattan">Manhattan</option>
+        <option value="Queens">Queens</option>
+        <option value="Staten Island">Staten Island</option>
+      </select>
+    </div>
+    <div class="row" id="container"><br> <br> <br> <br> </div>
+  </div>
+</div>
+<hr>
+
+<br><br><br>
+
+<script type="text/javascript" src="./js/chart_count.js"></script>
+<script type="text/javascript" src="./js/data_countPU.js"></script>
+
+<script>
+  var borough_name = 'Bronx';
+  var filter_data = find_in_object(count_dataPU, {'Borough': borough_name});
+  //console.log(filter_data);
+  count(borough_name,filter_data);
+
+  function count_selection(){
+    var borough_name = document.getElementById("borough").value;
+    console.log (borough_name);
+    var filter_data = find_in_object(count_dataPU, {'Borough': borough_name});
+    count(borough_name,filter_data);
+  };
+
+  function find_in_object(my_object, my_criteria){
+    return my_object.filter(function(obj) {
+      return Object.keys(my_criteria).every(function(c) {
+        return obj[c] == my_criteria[c];
+      });
+    });
+  };
+</script>
+
+
+<!--analysis duration-->
+
+<div class="count">
+  <div class="row">
+    <div class="section-title1"><h1>Trip Duration</h1></div>
+    <div class="text">
+      <p>The graph below presents the average duration per trip for each type of vehicle, the x-axis is the average duration per order and the y-axis is the overall order counts. It demonstrates the difference of trip duration between Taxis and FHVs in different boroughs. Meanshile, some interesting points can be found in specific borough.
+      </p><br>
+      <div class="italicText">
+        <strong>
+          <p>- In general, the average duration per trip of FHVs was 8 minutes longer than that of Taxis, which are 20 min and 12 min respectively.</p>
+          <p>- The average trip duration in Manhattan was significantly different from other boroughs, while others were rather similar.</p>
+          <p>- Compared to other types of vehicles, Green Taxis tended to provide long-term services.</p>
+          <p>- Industrial business zones (eg. Jamaica) were the most likely area of receiving long duration orders in Borough Queens.</p>
+        </strong>
+      </div><br>
+    </div>
+
+  	<div class="selection">
+      <select name="select-borough" id="borough2" onchange="duration_selection()">
+        <option value="borough">Select Borough</option>
+        <option value="Bronx">Bronx</option>
+        <option value="Brooklyn">Brooklyn</option>
+        <option value="Manhattan">Manhattan</option>
+        <option value="Queens">Queens</option>
+        <option value="Staten Island">Staten Island</option>
+      </select>
+    </div>
+  </div>
+  <div class="row" id="duration"><br> <br> <br> <br></div>
+</div>
+<hr>
+<br><br><br>
+
+<script type="text/javascript" src="./js/chart_duration.js"></script>
+<script type="text/javascript" src="./js/data_duration.js"></script>
+
+<script>
+  var borough_name = 'Bronx';
+  var filter_data = find_in_object(duration_data, {'Borough': borough_name});
+
+  duration(borough_name,filter_data);
+
+
+  function duration_selection(){
+    var borough_name = document.getElementById("borough2").value;
+    console.log (borough_name);
+    var filter_data = find_in_object(duration_data, {'Borough': borough_name});
+    duration(borough_name,filter_data);
+  };
+
+</script>
+
+<!--analysis distance-->
+
+<div class="container-fluid count">
+	<div class="row">
+    <div class="section-title1"><h1>Trip Distance</h1></div>
+    <div class="text">
+      <p>The average distance per trip for each type of vehicle is shown below, the x-axis is the average distance per order and the y-axis is the overall order counts. Similar to the above graph, it reveals the difference of trip distance between Taxis and FHVs in different boroughs and some key findings.
+      </p><br>
+      <div class="italicText">
+        <strong>
+          <p>- Generally, the average distance per trip of FHVs (4-6 km) was 1km larger than Taxis (2.5-5 km).</p>
+          <p>- In Manhattan, the average trip distance of passengers in Financial District was longer than other zones.</p>
+          <p>- In Queens,  Green Taxi is forbidden to pick up the passengers from Airports.</p>
+          <p>- In Brooklyn, Manhattan beach and Marine park were the most possible areas of receiving long distance orders.</p>
+        </strong>
+      </div><br>
+    </div>
+    <div class="selection">
+      <select name="select-borough" id="borough3" onchange="distance_selection()">
+        <option value="borough">Select Borough</option>
+        <option value="Bronx">Bronx</option>
+        <option value="Brooklyn">Brooklyn</option>
+        <option value="Manhattan">Manhattan</option>
+        <option value="Queens">Queens</option>
+        <option value="Staten Island">Staten Island</option>
+      </select>
+    </div>
+	</div>
+  <div class="row" id="distance"><br> <br> <br> <br> </div>
+</div>
+<br><br><hr>
+
+<script type="text/javascript" src="./js/chart_distance.js"></script>
+<script type="text/javascript" src="./js/data_distance.js"></script>
+<script>
+var borough_name = 'Bronx';
+var filter_data = find_in_object(distance_data, {'Borough': borough_name});
+
+distance(borough_name,filter_data);
+
+
+function distance_selection(){
+  var borough_name = document.getElementById("borough3").value;
+  console.log (borough_name);
+  var filter_data = find_in_object(distance_data, {'Borough': borough_name});
+  distance(borough_name,filter_data);
+};
+</script>
+
+
+<!--analysis prediction-->
+<div class="container-fluid count">
+  <div class="row">
+    <div class="section-title1"><h1>ARIMA Model</h1></div>
+    <div class="text">
+      <p>The figures indicate the change of Pick-ups by month from 2015 to 2018, the x-axis is the timeline and the y-axis is the monthly order counts. Arima model was adopted to show the trend of change. The data of first 42 months was utilized to train the ARIMA model and the rest was adopted as test set. The order counts of four types of vehicles were at a great difference, and Uber won a large portion of market share in this field. </p><br>
+      <div class="italicText">
+        <strong>
+          <p>- Each vehicle had a slight rise in spring.</p>
+          <p>- Orders of both Green and Yellow Taxis dropped through years while that of Uber and Lyft increased dramatically. In this way, Ubers occupied the main taxi market in NYC.</p>
+        </strong>
+        <br><br>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="prediction1"><br> <br> <br> <br> </div><br><br>
+  <div class="row" id="prediction2"><br> <br> <br> <br> </div>
+</div>
+
+
+<script type="text/javascript" src="./js/chart_predict.js"></script>
+<script type="text/javascript" src="./js/chart_predict2.js"></script>
+
+<script type="text/javascript"> 
+prediction1()
+prediction2()
+</script>
+
+
+
+
+<!-- Footer -->
+<footer class="text-center">
+  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+    <img src="./pic/arrows_up.png"  width="30" height="20">
+  </a><br><br>
+  <p>Back To Top</p>
+</footer>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $("footer a").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+})
+</script>
+
+</body>
+</html>

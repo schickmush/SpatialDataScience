@@ -1,0 +1,178 @@
+
+/*----------- body ----------*/
+html, body{
+  font-family: Arial,"Helvetica Neue",Helvetica, sans-serif;
+  height: 100%;
+  width:100%;
+  background-color:#f5f5f5;
+}
+
+/*--------------header------------*/
+.navbar{
+  margin-bottom: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+img{
+  z-index: 80;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#showcase{
+  height: 350px;
+  text-align: center;
+  background-image:url('../pic/background3.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: top;
+}
+
+
+#showcase h{
+  color:#696969;
+  font-size:32px;
+  line-height: 1.6em;
+  padding-top:30px;
+  text-align: center;
+}
+
+
+/*------------ page intro ----------*/
+.intro-content {
+  font-family: Garamond  !important;
+	font-size: 18px;
+	color: #000;
+	text-align: justify;
+  margin-top: 3%;
+	margin-left: 25%;
+	margin-right: 25%;
+}
+
+.intro-content h{
+  font-size: 30px;
+  color: #FF9933;
+}
+
+
+/* page content */
+
+/* -------------------- Select Box Styles: bavotasan.com Method (with special adaptations by ericrasch.com) */
+/* -------------------- Source: http://bavotasan.com/2011/style-select-box-using-only-css/ */
+
+select {
+   background-color: #595959;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 2px; /* If you add too much padding here, the options won't show in IE */
+   width: 200px;
+   color: #fff;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #f1f1f1;
+  border-radius: 0;
+  transition: .2s;
+  }
+
+.btn:hover, .btn:focus {
+    border: 1px solid #333;
+    background-color: #fff;
+    color: #000;
+  }
+
+/*-------------analysis-----------*/
+
+.count {
+  width: 70%;
+  height: auto;
+  background-color: #f5f5f5;
+  margin-left: 15%;
+  margin-left: 15%;
+}
+
+.italicText {
+  font-style: italic;
+  line-height: normal;
+}
+
+.text{
+  line-height: 2;
+}
+
+.section-title {
+    width:50%;
+    margin-left: 0%;
+    margin-bottom: 0%;
+  	text-align: right;
+    border-left: 4px solid #FF9933;
+  	max-width: 250px;
+  	min-width: 200px;
+  }
+
+.section-title h1 {
+   color: #000;
+   font-size: 30px;
+   font-weight: bold;
+  }
+
+.section-title1 {
+   width:50%;
+   margin-left: 0%;
+   margin-bottom: 0%;
+   text-align: right;
+   border-left: 4px solid #FF9933;
+   max-width: 250px;
+   min-width: 200px;
+}
+
+.section-title1 h1 {
+  color: #000;
+  font-size: 30px;
+  font-weight: bold;
+    }
+
+.selection{
+    width: 10%;
+  	margin-top: 2%;
+  }
+
+.table{
+  margin-left: 5%;
+  margin-right:5%;
+  position: relative;
+
+}
+.text {
+  	color: #000;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 2%;
+    margin-left: 0%;
+    margin-right: 0%;
+    text-align: justify;
+  }
+
+
+
+/*------------------Footer----------------------  */
+footer {
+		background-color: rgba(70,70,70, 1);
+		color: #fff;
+		padding: 15px;
+}
+
+footer a {
+		color: #f5f5f5;
+}
+
+footer a:hover {
+		color: #777;
+		text-decoration: none;
+}

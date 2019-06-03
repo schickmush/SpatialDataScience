@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NYC Taxi VS FHV</title>
+
+  <!-- Load bootstrap CSS file -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+
+  <!-- Load Leaflet CSS file -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+
+  <!-- Load local CSS file -->
+  <link rel='stylesheet' id='font-css'  href='./css/choropleth_style.css' type='text/css' media='all' />
+
+  <!-- Load Leaflet JavaScript File -->
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+   crossorigin=""></script>
+
+  <script src="https://unpkg.com/esri-leaflet@2.1/dist/esri-leaflet.js"></script>
+
+
+  <!-- Load jQuery js File-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+  <!-- Load bootstrap js File -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="./js/raphael.min.js"></script>
+  <script src="./js/charts.min.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="./index.html">WHO IS THE WINNER</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="./index.html">HOME</a></li>
+      <li><a href="./background.html">BACKGROUND</a></li>
+      <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> MAP <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="./choropleth.html">Choropleth Map</a></li>
+          <li><a href="./flow.html">Flow Map</a></li>
+        </ul>
+      </li>
+      <li><a href="./analysis.html">ANALYSIS</a></li>
+      <li><a href="./us.html">ABOUT US</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div id="wrapper">
+  <!-- Map Layer -->
+  <div id='map-canvas'></div>
+
+  <div class="select_bar1">
+    <select id = "direnction_type" onchange= "change_direction()">
+        <option value="1" selected="">Pick-Ups</option>
+        <option value="0">Drop-Offs</option>
+      </select>
+  </div>
+
+  <div class="select_bar2">
+    <select id = "taxi_type" onchange= "change_type()">
+        <option value="4" selected="">All Taxi</option>
+        <option value="1">All FHV</option>
+        <option value="6">Yellow Taxi</option>
+        <option value="5">Green Taxi</option>
+        <option value="2">Uber</option>
+        <option value="3">Lyft</option>
+      </select>
+  </div>
+
+  <div class='session'>
+    <div class ="slidecontainer">
+      <h2>WEEKDAY: <label id='active-weekday'>Mon</label></h2>
+      <input id='weekday-slider' class='slider' type='range' min='0' max='6' step='1' value='1' />
+      <h2>HOUR: <label id='active-hour'>12PM</label></h2>
+      <input id='hour-slider' class='slider' type='range' min='0' max='23' step='1' value='12' />
+    </div>
+  </div>
+
+  <div class="legend">
+    <img src="./pic/legend2.png" class="img1">
+  </div>
+
+  <div class="bourough">
+    <button class ="collapsible"> Click Me to Check for Boroughs!</button>
+    <div class="content">
+      <img src="./pic/bourough.png" class="img2">
+    </div>
+  </div>
+
+
+</div>
+
+<!-- Load Taxi Zone geoJson data -->
+<script type='text/javascript' src='./js/taxizone.js'></script>
+
+<!-- Load Local JS File -->
+<script type="text/javascript" src="./js/choropleth_js.js"></script>
+
+
+</body>
+</html>

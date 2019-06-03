@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Welcome</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    body {
+      background-image: url('./pic/background1.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+  		background-position:center;
+  		background-color: #f5f5f5;
+  		text-align: center;
+    }
+
+    .title{
+      text-align: center;
+      position: relative;
+      padding-top: 10%;
+      top: 20%;
+      font-family: Times,"Helvetica Neue";
+      font-size: 6vw;
+      font-weight: normal;
+  		color: #fff;
+      animation: fadeIn 4s;
+    }
+
+    .title_intro{
+      text-align: center;
+      position: relative;
+      padding-top: 3%;
+      top: 30%;
+      width:70%;
+      margin:auto;
+      font-family: Times,"Helvetica Neue";
+      font-weight: normal;
+      font-size: 1.2vw;
+      color: #fff;
+      animation-delay: 3s;
+      animation: fadeIn 5s;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        background-color: #333;
+        color: #f1f1f1;
+        border-radius: 0;
+        transition: .2s;
+    }
+    .btn:hover, .btn:focus {
+        border: 1px solid #333;
+        background-color: #fff;
+        color: #000;
+    }
+  </style>
+</head>
+
+<body>
+<!------------------ navigaton bar ------------->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- if the window get adjusted, the navbar will be a single button -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#NavbarContent">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- navabr -->
+      <a class="navbar-brand" href="./index.html">WHO IS THE WINNER</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="./index.html">HOME</a></li>
+      <li><a href="./background.html">BACKGROUND</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> MAP <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="./choropleth.html">Choropleth Map</a></li>
+          <li><a href="./flow.html">Flow Map</a></li>
+        </ul>
+      </li>
+      <li><a href="./analysis.html">ANALYSIS</a></li>
+      <li><a href="./us.html">ABOUT US</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="welcome">
+  <div class="title">Who Is The WINNER</div>
+  <div class="title_intro">In recent years, For-Hired Vehicle has become a popular mode of commuting in New York.
+    It provides a faster, smarter and more convenient service to clients, which has caused huge competition with traditional taxi services.  <br>
+    Here comes the question: what is the commuting pattern for each service in NYC? <br>
+    Who is the winner in New York, Taxis or For-Hire Vehicles?
+</div>
+  <br><br><br><br>
+  <!-- <a class="btn" href="./analysis.html" >EXPLORE</a> -->
+  <a class="up-arrow" href="./choropleth.html" title="Explore more">
+    <img src="./pic/explore.png"  width="50" height="50">
+  </a>
+  </div>
+</div>
+
+</body>
+</html>
